@@ -45,15 +45,15 @@ struct CoinListView: View {
 
 }
 
-struct CoinListView_Preview: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            CoinListView { cancellableBag in
-                DIContainer.provideGetCoinViewModel(cancellableBag: cancellableBag)
-            }
-        }
-    }
-}
+//struct CoinListView_Preview: PreviewProvider {
+//    static var previews: some View {
+////        NavigationView {
+////            CoinListView { cancellableBag in
+////                DIContainer.provideGetCoinViewModel(cancellableBag: cancellableBag)
+////            }
+////        }
+//    }
+//}
 
 //MARK: - Extension
 extension CoinListView {
