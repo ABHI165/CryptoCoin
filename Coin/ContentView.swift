@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var vm = CoinListViewModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Hello, world!")
+                .padding()
+                .onTapGesture {
+                    vm.getCoinsForPage(page: 1, order: "market_cap_desc")
+                }
+            
+            if let ty = vm.coinData {
+                Text(ty[0].name)
+            }
+        }
     }
 }
 
