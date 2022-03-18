@@ -59,7 +59,7 @@ struct CoinListView: View {
 extension CoinListView {
     private var headerView: some View {
             HStack(alignment: .center){
-                CircularButton(imageName: homeVm.showPortfolio ? "plus" : "info"){
+                CircularButton(animate: $homeVm.showPortfolio, imageName: homeVm.showPortfolio ? "plus" : "info"){
                     
                 }
                 .padding()
@@ -77,6 +77,7 @@ extension CoinListView {
                     withAnimation(.spring()) {
                         homeVm.showPortfolio.toggle()
                     }
+                    
                 }
                 .padding()
                 .rotationEffect(homeVm.showPortfolio ? Angle(degrees: 180) : .zero)

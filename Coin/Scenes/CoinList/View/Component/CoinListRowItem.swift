@@ -30,6 +30,24 @@ struct CoinListRowItem: View {
 //MARK: - Extension View
 extension CoinListRowItem {
     
+    @ViewBuilder
+    private func getImageFromPhase(_ phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty:
+            ProgressView()
+        case .success(let image):
+            image
+                .resizable()
+                .frame(width: 30, height: 30)
+                .scaledToFit()
+        case .failure(let error):
+           // debugPrint("Something Went Wrong \(error)")
+            ProgressView()
+        @unknown default:
+            ProgressView()
+        }
+    }
+    
     //MARK:  Left Column
     private var leftColumn: some View {
         HStack(spacing: 5) {
@@ -37,15 +55,9 @@ extension CoinListRowItem {
                 .font(.subheadline)
                 .foregroundColor(Color.primary.secondaryText)
             
-            AsyncImage(url: URL(string: coinModel.image)) { image in
-                image
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
+            CachedAsyncImage(url: coinModel.image) { phase in
+                getImageFromPhase(phase)
             }.clipShape(Circle())
-
             
             Text("\(coinModel.symbol.uppercased())")
                 .font(.subheadline)

@@ -23,6 +23,8 @@
 		AD3CC2CB27C4FFEA005065A8 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */; };
 		ADB7786927C7A25000FC8AAB /* CoinViewModel + InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB7786827C7A25000FC8AAB /* CoinViewModel + InputOutput.swift */; };
 		ADB7786B27C7D2A300FC8AAB /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */; };
+		ADF2609127DE0AA20060CB8E /* Ripple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF2609027DE0AA20060CB8E /* Ripple.swift */; };
+		ADF2609327DF13DD0060CB8E /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		ADB7786827C7A25000FC8AAB /* CoinViewModel + InputOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinViewModel + InputOutput.swift"; sourceTree = "<group>"; };
 		ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		ADF2609027DE0AA20060CB8E /* Ripple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ripple.swift; sourceTree = "<group>"; };
+		ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 			children = (
 				AD25D6EE27C295C400866DE1 /* CoinListRowItem.swift */,
 				AD25D6F027C295D500866DE1 /* CoinListRowHeader.swift */,
+				ADF2609027DE0AA20060CB8E /* Ripple.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			children = (
 				AD25D6E627C2954D00866DE1 /* Color.swift */,
 				AD25D6E427C2954100866DE1 /* CircularButton.swift */,
+				ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,11 +278,13 @@
 				AD3CC2CB27C4FFEA005065A8 /* AlertMessage.swift in Sources */,
 				AD25D6CC27C0FCFA00866DE1 /* CoinApp.swift in Sources */,
 				ADB7786B27C7D2A300FC8AAB /* DIContainer.swift in Sources */,
+				ADF2609127DE0AA20060CB8E /* Ripple.swift in Sources */,
 				AD25D6F327C295E500866DE1 /* CoinListView.swift in Sources */,
 				ADB7786927C7A25000FC8AAB /* CoinViewModel + InputOutput.swift in Sources */,
 				AD25D6EF27C295C400866DE1 /* CoinListRowItem.swift in Sources */,
 				AD3CC2C727C4D80D005065A8 /* GenricSubscriber.swift in Sources */,
 				AD3CC2C427C4A577005065A8 /* Double.swift in Sources */,
+				ADF2609327DF13DD0060CB8E /* CachedAsyncImage.swift in Sources */,
 				AD25D6E527C2954100866DE1 /* CircularButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

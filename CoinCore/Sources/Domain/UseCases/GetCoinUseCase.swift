@@ -60,7 +60,7 @@ public class GetCoinUseCase {
                     
                 case .reload:
                     isReloading = true
-                    return self.getCoinRepo.fetchCoinForPage(page: pageNo, order: order)
+                    return self.getCoinRepo.fetchCoinForPage(page: 1, order: order)
                         .trackState(self.isReloadingState)
                         .trackError(self.errorHandler)
                         .catch({ _ in

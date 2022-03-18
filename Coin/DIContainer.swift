@@ -11,6 +11,7 @@ import Domain
 import Data
 import Combine
 import SwiftUI
+import Caching
 
 public class  DIContainer {
     private static let shared = DIContainer()
@@ -45,12 +46,9 @@ public class  DIContainer {
         return CoinListViewModel(cancellableBag: cancellableBag, getCoinUseCase: provideGetCoinUseCase(cancellableBag: cancellableBag))
     }
     
+    static func provideCachingManager<Key: Hashable, Value>() -> LRUCache<Key, Value> {
+        return LRUCache<Key, Value>()
+    }
     
-}
-
-extension DIContainer {
     
-//    static var previews: some View {
-//        
-//    }
 }

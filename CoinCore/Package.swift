@@ -7,12 +7,14 @@ enum Targets: CaseIterable {
     case data
     case domain
     case networking
+    case caching
     
     var name: String {
         switch self {
         case .data: return "Data"
         case .domain: return "Domain"
         case .networking: return "Networking"
+        case .caching: return "Caching"
         }
     }
     
@@ -31,6 +33,7 @@ let package = Package(
                     dependencies: [.target(name: Targets.networking.name, condition: nil), .target(name: Targets.domain.name, condition: nil)]),
         
         .target(name: Targets.domain.name),
-        .target(name: Targets.networking.name)
+        .target(name: Targets.networking.name),
+        .target(name: Targets.caching.name)
     ]
 )
