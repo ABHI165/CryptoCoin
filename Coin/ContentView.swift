@@ -16,7 +16,7 @@ struct ContentView: View {
                 .onTapGesture {
                     vm.getCoinsForPage(page: 1, order: "market_cap_desc")
                 }
-            
+
             if let ty = vm.coinData {
                 Text(ty[0].name)
             }

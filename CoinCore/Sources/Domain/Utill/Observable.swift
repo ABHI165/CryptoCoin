@@ -21,7 +21,7 @@ extension Publisher {
                   savedState.send(false)
               }).eraseToAnyPublisher()
     }
-    
+
      func trackError(_ errorTracker: ErrorHandler) -> AnyPublisher<Output, Failure> {
         return handleEvents(receiveCompletion: { completion in
             if case let .failure(error) = completion {
@@ -32,15 +32,9 @@ extension Publisher {
     }
 }
 
-
-   
-
-
-
-
-//public typealias ActivityTracker = CurrentValueSubject<Bool, Never>
+// public typealias ActivityTracker = CurrentValueSubject<Bool, Never>
 //
-//extension Publisher where Failure: Error {
+// extension Publisher where Failure: Error {
 //    public func trackActivity(_ activityTracker: ActivityTracker) -> AnyPublisher<Output, Failure> {
 //        return handleEvents(receiveSubscription: { _ in
 //            activityTracker.send(true)
@@ -49,4 +43,4 @@ extension Publisher {
 //        })
 //        .eraseToAnyPublisher()
 //    }
-//}
+// }

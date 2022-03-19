@@ -8,20 +8,20 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    
+
     static let primary = PrimaryTheme()
     static let launch = LaunchTheme()
-    
+
 }
 
 struct PrimaryTheme {
-    
+
     let accent = Color("AccentColor")
     let background = Color("BackgroundColor")
     let green = Color("GreenColor")
     let red = Color("RedColor")
     let secondaryText = Color("SecondaryTextColor")
-    
+
 }
 
 struct ColorTheme {
@@ -33,8 +33,8 @@ struct ColorTheme {
 }
 
 struct LaunchTheme {
-    
+
     let accent = Color("LaunchAccentColor")
     let background = Color("LaunchBackgroundColor")
-    
+
 }

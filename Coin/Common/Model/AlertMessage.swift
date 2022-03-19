@@ -10,13 +10,13 @@ import Foundation
 struct AlertMessage {
     let message: String
     let title: String
-  
+
     init(error: Error) {
         self.title = "Opps! Someting Went Wrong."
         self.message = error.localizedDescription
     }
-    
-    init(){
+
+    init() {
         self.message = ""
         self.title = ""
     }

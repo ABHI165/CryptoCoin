@@ -9,23 +9,23 @@ import Foundation
 import Combine
 
 public protocol Requestable {
-    
+
     var requestTimeout: Float { get }
     func request<T: Codable>(_ request: NetworkRequest) -> AnyPublisher<T, NetworkError>
 }
 
  public class DefaultRequestable: Requestable {
     public var requestTimeout: Float = 30
-    
+
     public init () {
-        
+
     }
-    
-    //FIXME: HANDEL URL TIMEOUT
-    public func request<T>(_ request: NetworkRequest) -> AnyPublisher<T, NetworkError> where T : Decodable, T : Encodable {
+
+    // FIXME: HANDEL URL TIMEOUT
+    public func request<T>(_ request: NetworkRequest) -> AnyPublisher<T, NetworkError> where T: Decodable, T: Encodable {
         let sessionConfig = URLSessionConfiguration.default
                 sessionConfig.timeoutIntervalForRequest = TimeInterval(request.requestTimeOut ?? requestTimeout)
-                
+
         guard let url = URL(string: request.url) else {
                     // Return a fail publisher if the url is invalid
                     return AnyPublisher(
@@ -42,11 +42,11 @@ public protocol Requestable {
                         guard let response =  output.response as? HTTPURLResponse else {
                             throw NetworkError.serverError(code: 0, error: "Server error")
                         }
-                        
+
                         guard response.statusCode == 200 else {
                             throw NetworkError.apiError(code: response.statusCode, error: response.description)
                         }
-                        
+
                         return output.data
                     }
                     .decode(type: T.self, decoder: JSONDecoder())
@@ -56,6 +56,5 @@ public protocol Requestable {
                     }
                     .eraseToAnyPublisher()
     }
-    
-    
+
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 import UIKit
 
 /// Notification that cache should be cleared
@@ -37,8 +36,7 @@ public final class LRUCache<Key: Hashable, Value> {
 
     /// Initialize the cache with the specified `totalCostLimit` and `countLimit`
     public init(totalCostLimit: Int = .max, countLimit: Int = .max,
-                notificationCenter: NotificationCenter = .default)
-    {
+                notificationCenter: NotificationCenter = .default) {
         self.totalCostLimit = totalCostLimit
         self.countLimit = countLimit
         self.notificationCenter = notificationCenter
@@ -174,8 +172,7 @@ private extension LRUCache {
         lock.lock()
         defer { lock.unlock() }
         while totalCost > totalCostLimit || count > countLimit,
-              let container = head
-        {
+              let container = head {
             remove(container)
             values.removeValue(forKey: container.key)
             totalCost -= container.cost

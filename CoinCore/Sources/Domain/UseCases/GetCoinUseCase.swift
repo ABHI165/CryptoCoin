@@ -14,23 +14,23 @@ public enum LoadingType {
 }
 
 public class GetCoinUseCase {
-    
+
     private let getCoinRepo: GetCoinRepo
-    
+
     @Published public var coinData: [CoinModel] = []
     @Published  public var portfolio: [CoinModel] = []
-   
+
     public var isLoadingState = SavedState(false)
     public var isReloadingState = SavedState(false)
     public var errorHandler = ErrorHandler()
     private var cancellableBag: Set<AnyCancellable>
-    
-    public init(getcoinRepo: GetCoinRepo, cancellableBag: Set<AnyCancellable>){
+
+    public init(getcoinRepo: GetCoinRepo, cancellableBag: Set<AnyCancellable>) {
         self.getCoinRepo = getcoinRepo
         self.cancellableBag = cancellableBag
     }
-    
-    public func execute(order: String, lodeMoreTriggered: PassthroughSubject<LoadingType,Never>) {
+
+    public func execute(order: String, lodeMoreTriggered: PassthroughSubject<LoadingType, Never>) {
         var isReloading = false
          var pageNo = 1
         lodeMoreTriggered
@@ -41,13 +41,13 @@ public class GetCoinUseCase {
                 print(!self.isLoadingState.value && !self.isReloadingState.value)
               return  !self.isLoadingState.value && !self.isReloadingState.value
             })
-            .map{[weak self] (loadingType: LoadingType) -> AnyPublisher<[CoinModel], Never> in
-                
+            .map {[weak self] (loadingType: LoadingType) -> AnyPublisher<[CoinModel], Never> in
+
                 guard let self = self else {
                     return Empty(completeImmediately: true)
                         .eraseToAnyPublisher()
                 }
-                
+
                 switch loadingType {
                 case .loadMore:
                     return self.getCoinRepo.fetchCoinForPage(page: pageNo + 1, order: order)
@@ -57,7 +57,7 @@ public class GetCoinUseCase {
                             Empty()
                         })
                         .eraseToAnyPublisher()
-                    
+
                 case .reload:
                     isReloading = true
                     return self.getCoinRepo.fetchCoinForPage(page: 1, order: order)
@@ -67,11 +67,11 @@ public class GetCoinUseCase {
                             Empty()
                         })
                         .eraseToAnyPublisher()
-                    
+
                 }
             }
             .switchToLatest()
-            .sink(receiveValue: {[weak self] (coins:[CoinModel]) in
+            .sink(receiveValue: {[weak self] (coins: [CoinModel]) in
                 if isReloading {
                     isReloading = false
                     self?.coinData.removeAll()
@@ -82,12 +82,6 @@ public class GetCoinUseCase {
                 }
             })
             .store(in: &cancellableBag)
-        
-           
-        
-        
-        
-        
-        
+
     }
 }

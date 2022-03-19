@@ -12,8 +12,8 @@ public enum CustomError: Error {
 }
 
 extension CustomError: LocalizedError {
-    
-    public var errorDescription: String?{
+
+    public var errorDescription: String? {
         switch self {
         case .error(let message):
             return message

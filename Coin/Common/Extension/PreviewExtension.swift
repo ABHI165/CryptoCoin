@@ -9,25 +9,23 @@ import Foundation
 import SwiftUI
 import Domain
 
-
 extension PreviewProvider {
-    
+
     static var dev: DeveloperPreview {
         return DeveloperPreview.instance
     }
-    
+
 }
 
 class DeveloperPreview {
-    
+
     static let instance = DeveloperPreview()
     private init() { }
-    
-   
+
   //  let stat1 = StatisticModel(title: "Market Cap", value: "$12.5Bn", percentageChange: 25.34)
   //  let stat2 = StatisticModel(title: "Total Volume", value: "$1.23Tr")
  //   let stat3 = StatisticModel(title: "Portfolio Value", value: "$50.4k", percentageChange: -12.34)
-    
+
     let coin = CoinModel(
        id: "bitcoin",
        symbol: "btc",
@@ -54,7 +52,7 @@ class DeveloperPreview {
        atlChangePercentage: 90020.24075,
        atlDate: "2013-07-06T00:00:00.000Z",
        lastUpdated: "2021-03-13T23:18:10.268Z",
-       sparklineIn7D:  [
+       sparklineIn7D: [
            54019.26878317463,
            53718.060935791524,
            53677.12968669343,
@@ -227,6 +225,5 @@ class DeveloperPreview {
        ],
        priceChangePercentage24HInCurrency: 3952.64,
        currentHoldings: 1.5)
-    
-}
 
+}

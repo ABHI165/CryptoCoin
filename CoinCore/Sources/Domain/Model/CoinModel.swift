@@ -8,7 +8,7 @@
 import Foundation
 
 public struct CoinModel: Identifiable, Equatable {
-    
+
     public  let id, symbol, name: String
     public let image: String
     public let currentPrice: Double
@@ -27,7 +27,7 @@ public struct CoinModel: Identifiable, Equatable {
     public let sparklineIn7D: [Double]?
     public let priceChangePercentage24HInCurrency: Double?
     public let currentHoldings: Double?
-    
+
     public init(id: String, symbol: String, name: String, image: String, currentPrice: Double, marketCap: Double?, marketCapRank: Double?, fullyDilutedValuation: Double?, totalVolume: Double?, high24H: Double?, low24H: Double?, priceChange24H: Double?, priceChangePercentage24H: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, circulatingSupply: Double?, totalSupply: Double?, maxSupply: Double?, ath: Double?, athChangePercentage: Double?, athDate: String?, atl: Double?, atlChangePercentage: Double?, atlDate: String?, lastUpdated: String?, sparklineIn7D: [Double]?, priceChangePercentage24HInCurrency: Double?, currentHoldings: Double?) {
         self.id = id
         self.symbol = symbol
@@ -58,19 +58,17 @@ public struct CoinModel: Identifiable, Equatable {
         self.priceChangePercentage24HInCurrency = priceChangePercentage24HInCurrency
         self.currentHoldings = currentHoldings
     }
-    
+
     func updateHoldings(amount: Double) -> CoinModel {
         return CoinModel(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCap: marketCap, marketCapRank: marketCapRank, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, currentHoldings: amount)
     }
-    
+
    public var currentHoldingsValue: Double {
         return (currentHoldings ?? 0) * currentPrice
     }
-    
+
    public var rank: Int {
         return Int(marketCapRank ?? 0)
     }
-    
+
 }
-
-

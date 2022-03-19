@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinListRowHeader: View {
     @Binding var showPortfolio: Bool
-    
+
     var body: some View {
         HStack {
             Text("Coin")
@@ -20,7 +20,7 @@ struct CoinListRowHeader: View {
                     .foregroundColor(Color.primary.secondaryText)
                     .animation(.easeInOut)
             }
-           
+
             Text("Price")
                 .foregroundColor(Color.primary.secondaryText)
                 .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)

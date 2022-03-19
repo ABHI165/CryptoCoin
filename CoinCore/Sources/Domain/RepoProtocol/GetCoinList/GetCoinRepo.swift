@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 public protocol GetCoinRepo {
-    
+
     func fetchCoinForPage(page: Int, order: String) -> Observable<[CoinModel]>
+    func getCoinStats() -> Observable<CoinListStats>
 }

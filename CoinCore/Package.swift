@@ -8,7 +8,7 @@ enum Targets: CaseIterable {
     case domain
     case networking
     case caching
-    
+
     var name: String {
         switch self {
         case .data: return "Data"
@@ -17,7 +17,7 @@ enum Targets: CaseIterable {
         case .caching: return "Caching"
         }
     }
-    
+
 }
 
 let package = Package(
@@ -26,12 +26,12 @@ let package = Package(
     products: [
         .library(
             name: "CoinCore",
-            targets:Targets.allCases.map(\.name))
+            targets: Targets.allCases.map(\.name))
     ],
     targets: [
         .target(name: Targets.data.name,
                     dependencies: [.target(name: Targets.networking.name, condition: nil), .target(name: Targets.domain.name, condition: nil)]),
-        
+
         .target(name: Targets.domain.name),
         .target(name: Targets.networking.name),
         .target(name: Targets.caching.name)

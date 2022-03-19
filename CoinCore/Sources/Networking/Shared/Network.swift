@@ -13,7 +13,7 @@ public struct NetworkRequest {
     let body: Data?
     let requestTimeOut: Float?
     let httpMethod: HTTPMethod
-    
+
     public init(url: String,
                 headers: [String: String]? = nil,
                 reqBody: Encodable? = nil,
@@ -26,7 +26,7 @@ public struct NetworkRequest {
         self.requestTimeOut = reqTimeout
         self.httpMethod = httpMethod
     }
-    
+
     public init(url: String,
                 headers: [String: String]? = nil,
                 reqBody: Data? = nil,
@@ -39,7 +39,7 @@ public struct NetworkRequest {
         self.requestTimeOut = reqTimeout
         self.httpMethod = httpMethod
     }
-    
+
     func buildURLRequest(with url: URL) -> URLRequest {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethod.rawValue
@@ -84,7 +84,6 @@ extension NetworkError: LocalizedError {
         }
     }
 }
-
 
 extension Encodable {
     func encode() -> Data? {
