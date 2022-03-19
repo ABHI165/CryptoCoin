@@ -23,6 +23,7 @@ struct CoinListView: View {
             
             VStack(spacing: 0) {
                headerView
+                SearchBar(text: $homeVm.searchText)
                 CoinListRowHeader(showPortfolio: $homeVm.showPortfolio)
                     .padding()
                 Spacer()
@@ -96,7 +97,6 @@ extension CoinListView {
                 CoinListRowItem(coinModel: model, showHolding: false)
                     .onAppear(perform: {
                       if let lastData = homeVm.coinData.last , model == lastData {
-                          print("coin data ui")
                             homeVm.loadMore = true
                         }
                     })
@@ -124,3 +124,4 @@ extension CoinListView {
         
     }
 }
+

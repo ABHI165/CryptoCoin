@@ -18,12 +18,13 @@ public enum MarketCapOrder: String {
 public final class CoinListViewModel: ObservableObject {
     
     @Published var error = AlertMessage()
-    private var cancellableBag: CancellableBag
-    @Published var coinData: [CoinModel] = []
-    @Published var portfolio: [CoinModel] = []
     @Published var loadMore = false
     @Published var isReloading = true
     @Published var showPortfolio = false
+    @Published var searchText = ""
+    private var cancellableBag: CancellableBag
+    @Published   var coinData: [CoinModel] = []
+    @Published   var portfolio: [CoinModel] = []
     private var _isLoadMoreTriggered = PassthroughSubject<LoadingType, Never>()
     
     let getCoinUseCase: GetCoinUseCase
@@ -34,8 +35,44 @@ public final class CoinListViewModel: ObservableObject {
         addSubscriber()
     }
     
-   private func addSubscriber() {
+    private func addSubscriber() {
         getCoinUseCase.execute(order: MarketCapOrder.desc.rawValue, lodeMoreTriggered: _isLoadMoreTriggered)
+        
+        $searchText
+            .debounce(for: 0.2, scheduler: DispatchQueue.main, options: nil)
+            .combineLatest(getCoinUseCase.$coinData, getCoinUseCase.$portfolio)
+            .map { [weak self] (text, coinData, portfolio) -> [CoinModel]? in
+                
+                guard let self = self else { return nil }
+                
+                if !self.showPortfolio {
+                    self.coinData = coinData
+                    if text.isEmpty {
+                        return self.coinData
+                    } else {
+                        return self.coinData.filter{$0.name.lowercased().contains(text.lowercased())}
+                    }
+                } else {
+                    self.portfolio = portfolio
+                    if text.isEmpty {
+                        return self.portfolio
+                    } else {
+                        return self.portfolio.filter{$0.name.lowercased().contains(text.lowercased())}
+                    }
+                }
+            }
+            .compactMap{$0}
+            .sink { [weak self] model in
+                guard let self = self else { return }
+                
+                if self.showPortfolio {
+                    self.portfolio = model
+                } else {
+                    self.coinData = model
+                }
+                
+            }.store(in: &cancellableBag)
+        
         
         $loadMore
             .combineLatest($isReloading)
@@ -48,19 +85,6 @@ public final class CoinListViewModel: ObservableObject {
                 }
                 
             }.store(in: &cancellableBag)
-        
-        getCoinUseCase.$coinData
-            .sink(receiveValue: { [weak self] coinData in
-                self?.coinData.removeAll()
-                self?.coinData.append(contentsOf: coinData)
-            })
-            .store(in: &cancellableBag)
-        
-        getCoinUseCase.$portfolio
-            .sink(receiveValue: { [weak self] coinData in
-                self?.portfolio.append(contentsOf: coinData)
-            })
-            .store(in: &cancellableBag)
         
         getCoinUseCase.errorHandler
             .receive(on: DispatchQueue.main)
@@ -79,17 +103,14 @@ public final class CoinListViewModel: ObservableObject {
         
         getCoinUseCase.isReloadingState
             .sink { [weak self] isReloading in
-            guard let self = self else { return }
-            if !isReloading && self.isReloading {
-                self.isReloading = false
-            }
-            
-        }.store(in: &cancellableBag)
-        
+                guard let self = self else { return }
+                if !isReloading && self.isReloading {
+                    self.isReloading = false
+                }
+                
+            }.store(in: &cancellableBag)
         
     }
-    
-    
 }
 
 

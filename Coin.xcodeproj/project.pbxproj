@@ -21,7 +21,7 @@
 		AD3CC2C427C4A577005065A8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2C327C4A577005065A8 /* Double.swift */; };
 		AD3CC2C727C4D80D005065A8 /* GenricSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2C627C4D80D005065A8 /* GenricSubscriber.swift */; };
 		AD3CC2CB27C4FFEA005065A8 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */; };
-		ADB7786927C7A25000FC8AAB /* CoinViewModel + InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB7786827C7A25000FC8AAB /* CoinViewModel + InputOutput.swift */; };
+		AD77325A27E49DA400B24E91 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77325927E49DA400B24E91 /* SearchBar.swift */; };
 		ADB7786B27C7D2A300FC8AAB /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */; };
 		ADF2609127DE0AA20060CB8E /* Ripple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF2609027DE0AA20060CB8E /* Ripple.swift */; };
 		ADF2609327DF13DD0060CB8E /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */; };
@@ -43,7 +43,7 @@
 		AD3CC2C327C4A577005065A8 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		AD3CC2C627C4D80D005065A8 /* GenricSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenricSubscriber.swift; sourceTree = "<group>"; };
 		AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
-		ADB7786827C7A25000FC8AAB /* CoinViewModel + InputOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinViewModel + InputOutput.swift"; sourceTree = "<group>"; };
+		AD77325927E49DA400B24E91 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		ADF2609027DE0AA20060CB8E /* Ripple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ripple.swift; sourceTree = "<group>"; };
 		ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
@@ -88,7 +88,6 @@
 				AD25D6CB27C0FCFA00866DE1 /* CoinApp.swift */,
 				AD25D6CF27C0FCFE00866DE1 /* Assets.xcassets */,
 				AD25D6D127C0FCFE00866DE1 /* Preview Content */,
-				ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */,
 			);
 			path = Coin;
 			sourceTree = "<group>";
@@ -139,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				AD25D6DD27C127B800866DE1 /* CoinListViewModel.swift */,
-				ADB7786827C7A25000FC8AAB /* CoinViewModel + InputOutput.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +173,7 @@
 		AD3CC2C527C4D7E3005065A8 /* Utill */ = {
 			isa = PBXGroup;
 			children = (
+				ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */,
 				AD3CC2C627C4D80D005065A8 /* GenricSubscriber.swift */,
 			);
 			path = Utill;
@@ -186,6 +185,7 @@
 				AD25D6E627C2954D00866DE1 /* Color.swift */,
 				AD25D6E427C2954100866DE1 /* CircularButton.swift */,
 				ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */,
+				AD77325927E49DA400B24E91 /* SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,6 +273,7 @@
 			files = (
 				AD25D6F127C295D500866DE1 /* CoinListRowHeader.swift in Sources */,
 				AD25D6DE27C127B800866DE1 /* CoinListViewModel.swift in Sources */,
+				AD77325A27E49DA400B24E91 /* SearchBar.swift in Sources */,
 				AD3CC2C227C4A4DF005065A8 /* PreviewExtension.swift in Sources */,
 				AD25D6E727C2954D00866DE1 /* Color.swift in Sources */,
 				AD3CC2CB27C4FFEA005065A8 /* AlertMessage.swift in Sources */,
@@ -280,7 +281,6 @@
 				ADB7786B27C7D2A300FC8AAB /* DIContainer.swift in Sources */,
 				ADF2609127DE0AA20060CB8E /* Ripple.swift in Sources */,
 				AD25D6F327C295E500866DE1 /* CoinListView.swift in Sources */,
-				ADB7786927C7A25000FC8AAB /* CoinViewModel + InputOutput.swift in Sources */,
 				AD25D6EF27C295C400866DE1 /* CoinListRowItem.swift in Sources */,
 				AD3CC2C727C4D80D005065A8 /* GenricSubscriber.swift in Sources */,
 				AD3CC2C427C4A577005065A8 /* Double.swift in Sources */,
