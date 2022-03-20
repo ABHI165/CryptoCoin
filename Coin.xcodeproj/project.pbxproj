@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		AD13325A27E5A8A800A7EAC5 /* CoinStatsColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13325927E5A8A800A7EAC5 /* CoinStatsColumnView.swift */; };
 		AD13325C27E6BF3500A7EAC5 /* CoinStatsRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13325B27E6BF3500A7EAC5 /* CoinStatsRowItem.swift */; };
+		AD13325E27E6FC8800A7EAC5 /* ErrorSnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13325D27E6FC8800A7EAC5 /* ErrorSnackBar.swift */; };
+		AD13326127E7030900A7EAC5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AD13326027E7030900A7EAC5 /* Lottie */; };
+		AD13326527E704E000A7EAC5 /* CoinCore in Frameworks */ = {isa = PBXBuildFile; productRef = AD13326427E704E000A7EAC5 /* CoinCore */; };
 		AD25D6CC27C0FCFA00866DE1 /* CoinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD25D6CB27C0FCFA00866DE1 /* CoinApp.swift */; };
 		AD25D6D027C0FCFE00866DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD25D6CF27C0FCFE00866DE1 /* Assets.xcassets */; };
 		AD25D6D327C0FCFE00866DE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD25D6D227C0FCFE00866DE1 /* Preview Assets.xcassets */; };
-		AD25D6DC27C0FD5900866DE1 /* CoinCore in Frameworks */ = {isa = PBXBuildFile; productRef = AD25D6DB27C0FD5900866DE1 /* CoinCore */; };
 		AD25D6DE27C127B800866DE1 /* CoinListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD25D6DD27C127B800866DE1 /* CoinListViewModel.swift */; };
 		AD25D6E527C2954100866DE1 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD25D6E427C2954100866DE1 /* CircularButton.swift */; };
 		AD25D6E727C2954D00866DE1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD25D6E627C2954D00866DE1 /* Color.swift */; };
@@ -32,6 +34,7 @@
 /* Begin PBXFileReference section */
 		AD13325927E5A8A800A7EAC5 /* CoinStatsColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinStatsColumnView.swift; sourceTree = "<group>"; };
 		AD13325B27E6BF3500A7EAC5 /* CoinStatsRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinStatsRowItem.swift; sourceTree = "<group>"; };
+		AD13325D27E6FC8800A7EAC5 /* ErrorSnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackBar.swift; sourceTree = "<group>"; };
 		AD25D6C827C0FCFA00866DE1 /* Coin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD25D6CB27C0FCFA00866DE1 /* CoinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinApp.swift; sourceTree = "<group>"; };
 		AD25D6CF27C0FCFE00866DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,16 +61,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD25D6DC27C0FD5900866DE1 /* CoinCore in Frameworks */,
+				AD13326527E704E000A7EAC5 /* CoinCore in Frameworks */,
+				AD13326127E7030900A7EAC5 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD13326227E703CB00A7EAC5 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		AD25D6BF27C0FCFA00866DE1 = {
 			isa = PBXGroup;
 			children = (
+				AD13326227E703CB00A7EAC5 /* Packages */,
 				AD25D6D927C0FD4600866DE1 /* CoinCore */,
 				AD25D6CA27C0FCFA00866DE1 /* Coin */,
 				AD25D6C927C0FCFA00866DE1 /* Products */,
@@ -117,6 +129,7 @@
 				AD3CC2C927C4FFD6005065A8 /* Model */,
 				AD3CC2C827C4FFC0005065A8 /* View */,
 				AD25D6F427C2966B00866DE1 /* Extension */,
+				AD13325D27E6FC8800A7EAC5 /* ErrorSnackBar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -221,7 +234,8 @@
 			);
 			name = Coin;
 			packageProductDependencies = (
-				AD25D6DB27C0FD5900866DE1 /* CoinCore */,
+				AD13326027E7030900A7EAC5 /* Lottie */,
+				AD13326427E704E000A7EAC5 /* CoinCore */,
 			);
 			productName = Coin;
 			productReference = AD25D6C827C0FCFA00866DE1 /* Coin.app */;
@@ -251,6 +265,9 @@
 				Base,
 			);
 			mainGroup = AD25D6BF27C0FCFA00866DE1;
+			packageReferences = (
+				AD13325F27E7030900A7EAC5 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = AD25D6C927C0FCFA00866DE1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -294,6 +311,7 @@
 				AD13325A27E5A8A800A7EAC5 /* CoinStatsColumnView.swift in Sources */,
 				ADF2609327DF13DD0060CB8E /* CachedAsyncImage.swift in Sources */,
 				AD25D6E527C2954100866DE1 /* CircularButton.swift in Sources */,
+				AD13325E27E6FC8800A7EAC5 /* ErrorSnackBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,8 +513,24 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		AD13325F27E7030900A7EAC5 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		AD25D6DB27C0FD5900866DE1 /* CoinCore */ = {
+		AD13326027E7030900A7EAC5 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD13325F27E7030900A7EAC5 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		AD13326427E704E000A7EAC5 /* CoinCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoinCore;
 		};

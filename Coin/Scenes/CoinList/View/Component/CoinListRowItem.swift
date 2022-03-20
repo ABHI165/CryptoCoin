@@ -35,6 +35,8 @@ extension CoinListRowItem {
         switch phase {
         case .empty:
             ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .foregroundColor(.primary.accent)
         case .success(let image):
             image
                 .resizable()
@@ -43,6 +45,8 @@ extension CoinListRowItem {
         case .failure(let error):
            // debugPrint("Something Went Wrong \(error)")
             ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .foregroundColor(.primary.accent)
         @unknown default:
             ProgressView()
         }
