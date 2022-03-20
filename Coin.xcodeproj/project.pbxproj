@@ -25,6 +25,8 @@
 		AD3CC2C427C4A577005065A8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2C327C4A577005065A8 /* Double.swift */; };
 		AD3CC2C727C4D80D005065A8 /* GenricSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2C627C4D80D005065A8 /* GenricSubscriber.swift */; };
 		AD3CC2CB27C4FFEA005065A8 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */; };
+		AD49F63927E7196A00ABDA7B /* error-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = AD49F63827E7196A00ABDA7B /* error-animation.json */; };
+		AD49F63B27E719B600ABDA7B /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49F63A27E719B500ABDA7B /* LottieView.swift */; };
 		AD77325A27E49DA400B24E91 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77325927E49DA400B24E91 /* SearchBar.swift */; };
 		ADB7786B27C7D2A300FC8AAB /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */; };
 		ADF2609127DE0AA20060CB8E /* Ripple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF2609027DE0AA20060CB8E /* Ripple.swift */; };
@@ -50,6 +52,8 @@
 		AD3CC2C327C4A577005065A8 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		AD3CC2C627C4D80D005065A8 /* GenricSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenricSubscriber.swift; sourceTree = "<group>"; };
 		AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		AD49F63827E7196A00ABDA7B /* error-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "error-animation.json"; sourceTree = "<group>"; };
+		AD49F63A27E719B500ABDA7B /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		AD77325927E49DA400B24E91 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		ADB7786A27C7D2A300FC8AAB /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		ADF2609027DE0AA20060CB8E /* Ripple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ripple.swift; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 		AD13326227E703CB00A7EAC5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				AD25D6D927C0FD4600866DE1 /* CoinCore */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -80,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				AD13326227E703CB00A7EAC5 /* Packages */,
-				AD25D6D927C0FD4600866DE1 /* CoinCore */,
 				AD25D6CA27C0FCFA00866DE1 /* Coin */,
 				AD25D6C927C0FCFA00866DE1 /* Products */,
 				AD25D6DA27C0FD5900866DE1 /* Frameworks */,
@@ -126,10 +130,10 @@
 		AD25D6E127C2924000866DE1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AD49F63727E7193C00ABDA7B /* Lottie */,
 				AD3CC2C927C4FFD6005065A8 /* Model */,
 				AD3CC2C827C4FFC0005065A8 /* View */,
 				AD25D6F427C2966B00866DE1 /* Extension */,
-				AD13325D27E6FC8800A7EAC5 /* ErrorSnackBar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -201,10 +205,12 @@
 		AD3CC2C827C4FFC0005065A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD13325D27E6FC8800A7EAC5 /* ErrorSnackBar.swift */,
 				AD25D6E627C2954D00866DE1 /* Color.swift */,
 				AD25D6E427C2954100866DE1 /* CircularButton.swift */,
 				ADF2609227DF13DD0060CB8E /* CachedAsyncImage.swift */,
 				AD77325927E49DA400B24E91 /* SearchBar.swift */,
+				AD49F63A27E719B500ABDA7B /* LottieView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +221,14 @@
 				AD3CC2CA27C4FFEA005065A8 /* AlertMessage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AD49F63727E7193C00ABDA7B /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				AD49F63827E7196A00ABDA7B /* error-animation.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD49F63927E7196A00ABDA7B /* error-animation.json in Resources */,
 				AD25D6D327C0FCFE00866DE1 /* Preview Assets.xcassets in Resources */,
 				AD25D6D027C0FCFE00866DE1 /* Assets.xcassets in Resources */,
 			);
@@ -295,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD25D6F127C295D500866DE1 /* CoinListRowHeader.swift in Sources */,
+				AD49F63B27E719B600ABDA7B /* LottieView.swift in Sources */,
 				AD25D6DE27C127B800866DE1 /* CoinListViewModel.swift in Sources */,
 				AD13325C27E6BF3500A7EAC5 /* CoinStatsRowItem.swift in Sources */,
 				AD77325A27E49DA400B24E91 /* SearchBar.swift in Sources */,

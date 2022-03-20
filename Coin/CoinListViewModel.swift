@@ -17,7 +17,8 @@ public enum MarketCapOrder: String {
 
 public final class CoinListViewModel: ObservableObject {
 
-    @Published var error = AlertMessage()
+    @Published var showError = false
+     var error = AlertMessage()
     @Published var loadMore = false
     @Published var isReloading = true
     @Published var showPortfolio = false
@@ -109,6 +110,7 @@ public final class CoinListViewModel: ObservableObject {
             .map {AlertMessage(error: $0)}
             .sink(receiveValue: { [weak self] alertMessage in
                 self?.error = alertMessage
+                self?.showError = true
             })
             .store(in: &cancellableBag)
 
@@ -116,6 +118,7 @@ public final class CoinListViewModel: ObservableObject {
             .map {AlertMessage(error: $0)}
             .sink(receiveValue: { [weak self] alertMessage in
                 self?.error = alertMessage
+                self?.showError = true
             })
             .store(in: &cancellableBag)
 
