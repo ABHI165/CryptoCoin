@@ -53,9 +53,6 @@ public class GetCoinUseCase {
                     return self.getCoinRepo.fetchCoinForPage(page: pageNo + 1, order: order)
                         .trackState(self.isLoadingState)
                         .trackError(self.errorHandler)
-                        .catch({ _ in
-                            Empty()
-                        })
                         .eraseToAnyPublisher()
 
                 case .reload:
@@ -63,9 +60,6 @@ public class GetCoinUseCase {
                     return self.getCoinRepo.fetchCoinForPage(page: 1, order: order)
                         .trackState(self.isReloadingState)
                         .trackError(self.errorHandler)
-                        .catch({ _ in
-                            Empty()
-                        })
                         .eraseToAnyPublisher()
 
                 }

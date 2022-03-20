@@ -38,20 +38,20 @@ public class GetCoinRepoImpl: GetCoinRepo {
         }
     }
 
-    public func getCoinStats() -> Observable<CoinListStats> {
+    public func getCoinStats() -> Observable<CoinListStatsModel> {
         let endPoint = GetCoinsEndpoints.getStats
         do {
             let request = try endPoint.createRequest(buildType: buildType)
             return networkService.request(request)
                 .map { (stats: CoinStatsDTO ) in
-                    CoinListStats(totalMarketCap: stats.data.totalMarketCap, totalVolume: stats.data.totalVolume, marketCapPercentage: stats.data.marketCapPercentage, marketCapChangePercentage24HUsd: stats.data.marketCapChangePercentage24HUsd)
+                    CoinListStatsModel(totalMarketCap: stats.data.totalMarketCap, totalVolume: stats.data.totalVolume, marketCapPercentage: stats.data.marketCapPercentage, marketCapChangePercentage24HUsd: stats.data.marketCapChangePercentage24HUsd)
                 }
                 .mapError {CustomError.error($0.localizedDescription)}
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
 
         } catch let error {
-            return AnyPublisher(Fail<CoinListStats, Error>(error: error ))
+            return AnyPublisher(Fail<CoinListStatsModel, Error>(error: error ))
         }
     }
 

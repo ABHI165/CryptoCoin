@@ -22,25 +22,15 @@ extension Publisher {
               }).eraseToAnyPublisher()
     }
 
-     func trackError(_ errorTracker: ErrorHandler) -> AnyPublisher<Output, Failure> {
+     func trackError(_ errorTracker: ErrorHandler) -> AnyPublisher<Output, Never> {
         return handleEvents(receiveCompletion: { completion in
             if case let .failure(error) = completion {
                 errorTracker.send(error)
             }
         })
+        .catch({ _ in
+                 Empty()
+             })
         .eraseToAnyPublisher()
     }
 }
-
-// public typealias ActivityTracker = CurrentValueSubject<Bool, Never>
-//
-// extension Publisher where Failure: Error {
-//    public func trackActivity(_ activityTracker: ActivityTracker) -> AnyPublisher<Output, Failure> {
-//        return handleEvents(receiveSubscription: { _ in
-//            activityTracker.send(true)
-//        }, receiveCompletion: { _ in
-//            activityTracker.send(false)
-//        })
-//        .eraseToAnyPublisher()
-//    }
-// }

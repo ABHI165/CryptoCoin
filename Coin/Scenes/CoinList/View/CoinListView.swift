@@ -22,7 +22,10 @@ struct CoinListView: View {
 
             VStack(spacing: 0) {
                headerView
+                statsView
+
                 SearchBar(text: $homeVm.searchText)
+
                 CoinListRowHeader(showPortfolio: $homeVm.showPortfolio)
                     .padding()
                 Spacer()
@@ -55,6 +58,17 @@ struct CoinListView: View {
 
 // MARK: - Extension
 extension CoinListView {
+    private var statsView: some View {
+        HStack {
+            ForEach(homeVm.coinStatsItem) { data in
+                CoinStatsColumnView(data: data)
+                    .frame(width: UIScreen.main.bounds.width/3 )
+            }
+        }
+        .frame(width: UIScreen.main.bounds.width, alignment: homeVm.showPortfolio ? .trailing : .leading)
+
+    }
+
     private var headerView: some View {
             HStack(alignment: .center) {
                 CircularButton(animate: $homeVm.showPortfolio, imageName: homeVm.showPortfolio ? "plus" : "info") {

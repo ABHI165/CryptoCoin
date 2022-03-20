@@ -23,20 +23,40 @@ public final class CoinListViewModel: ObservableObject {
     @Published var showPortfolio = false
     @Published var searchText = ""
     private var cancellableBag: CancellableBag
-    @Published   var coinData: [CoinModel] = []
-    @Published   var portfolio: [CoinModel] = []
+    @Published var coinData: [CoinModel] = []
+    @Published var portfolio: [CoinModel] = []
+    @Published var coinStatsItem: [CoinStatsRowItem] = []
     private var _isLoadMoreTriggered = PassthroughSubject<LoadingType, Never>()
 
     let getCoinUseCase: GetCoinUseCase
+    let getCoinMarketStatsUseCase: GetCoinMarketStatsUseCase
 
-    init(cancellableBag: CancellableBag, getCoinUseCase: GetCoinUseCase ) {
+    init(cancellableBag: CancellableBag, getCoinUseCase: GetCoinUseCase, getCoinMarketStatsUseCase: GetCoinMarketStatsUseCase) {
         self.getCoinUseCase = getCoinUseCase
         self.cancellableBag = cancellableBag
+        self.getCoinMarketStatsUseCase = getCoinMarketStatsUseCase
         addSubscriber()
     }
 
     private func addSubscriber() {
         getCoinUseCase.execute(order: MarketCapOrder.desc.rawValue, lodeMoreTriggered: _isLoadMoreTriggered)
+        getCoinMarketStatsUseCase.execute()
+
+        getCoinMarketStatsUseCase.$coinStats
+            .compactMap {$0}
+            .map({ (model) -> [CoinStatsRowItem] in
+                var rowItem: [CoinStatsRowItem] = []
+                rowItem.append(CoinStatsRowItem(title: "Market Cap", value: model.totalMarketCapInINR.formattedWithAbbreviations(), percentageChange: model.marketCapChangePercentage24HUsd))
+                rowItem.append(CoinStatsRowItem(title: "24H Volume", value: model.totalVolumeInINR.formattedWithAbbreviations(), percentageChange: nil))
+                rowItem.append(CoinStatsRowItem(title: "BTC Dominance", value: model.btcDominance.asPercentString(), percentageChange: nil))
+                rowItem.append(CoinStatsRowItem(title: "Portfolio Value", value: model.btcDominance.asPercentString(), percentageChange: nil))
+
+                return rowItem
+            })
+            .sink { [weak self] value in
+                self?.coinStatsItem = value
+            }
+            .store(in: &cancellableBag)
 
         $searchText
             .debounce(for: 0.2, scheduler: DispatchQueue.main, options: nil)
@@ -50,14 +70,14 @@ public final class CoinListViewModel: ObservableObject {
                     if text.isEmpty {
                         return self.coinData
                     } else {
-                        return self.coinData.filter {$0.name.lowercased().contains(text.lowercased())}
+                        return self.coinData.filter {$0.name.lowercased().contains(text.lowercased()) || $0.id.lowercased().contains(text.lowercased())}
                     }
                 } else {
                     self.portfolio = portfolio
                     if text.isEmpty {
                         return self.portfolio
                     } else {
-                        return self.portfolio.filter {$0.name.lowercased().contains(text.lowercased())}
+                        return self.portfolio.filter {$0.name.lowercased().contains(text.lowercased()) || $0.id.lowercased().contains(text.lowercased())}
                     }
                 }
             }
@@ -86,7 +106,13 @@ public final class CoinListViewModel: ObservableObject {
             }.store(in: &cancellableBag)
 
         getCoinUseCase.errorHandler
-            .receive(on: DispatchQueue.main)
+            .map {AlertMessage(error: $0)}
+            .sink(receiveValue: { [weak self] alertMessage in
+                self?.error = alertMessage
+            })
+            .store(in: &cancellableBag)
+
+        getCoinMarketStatsUseCase.errorHandler
             .map {AlertMessage(error: $0)}
             .sink(receiveValue: { [weak self] alertMessage in
                 self?.error = alertMessage

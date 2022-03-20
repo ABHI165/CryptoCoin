@@ -42,8 +42,12 @@ public class  DIContainer {
         return GetCoinUseCase(getcoinRepo: provideGetCoinRepository(), cancellableBag: cancellableBag)
     }
 
+    private func provideGetCoinMarketStatUseCase(cancellableBag: CancellableBag) -> GetCoinMarketStatsUseCase {
+        return GetCoinMarketStatsUseCase(getcoinRepo: provideGetCoinRepository(), cancellableBag: cancellableBag)
+    }
+
     private func provideGetCoinViewModel(cancellableBag: CancellableBag) -> CoinListViewModel {
-        return CoinListViewModel(cancellableBag: cancellableBag, getCoinUseCase: provideGetCoinUseCase(cancellableBag: cancellableBag))
+        return CoinListViewModel(cancellableBag: cancellableBag, getCoinUseCase: provideGetCoinUseCase(cancellableBag: cancellableBag), getCoinMarketStatsUseCase: provideGetCoinMarketStatUseCase(cancellableBag: cancellableBag))
     }
 
     static func provideCachingManager<Key: Hashable, Value>() -> LRUCache<Key, Value> {
