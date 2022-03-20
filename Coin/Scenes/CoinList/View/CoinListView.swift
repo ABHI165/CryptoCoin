@@ -40,7 +40,7 @@ struct CoinListView: View {
                 }
 
             }
-            
+
             ErrorSnackBar(isPresented: $homeVm.showError, error: homeVm.error)
                 .ignoresSafeArea(.all)
         }

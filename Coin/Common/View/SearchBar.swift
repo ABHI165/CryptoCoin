@@ -53,12 +53,13 @@ struct SearchBar: View {
 
             }
             .background {
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                RoundedRectangle(cornerRadius: 22)
                     .stroke(text.isEmpty ? Color.primary.secondaryText : Color.primary.accent, lineWidth: 1)
+                    .shadow(color: .white.opacity(0.6), radius: 1, x: -1, y: -2)
+                    .shadow(color: .black, radius: 1, x: 5, y: 6)
+
         }
         .padding()
-        .shadow(color: .white.opacity(0.18), radius: 8, x: -3, y: -2)
-        .shadow(color: .black.opacity(0.7), radius: 5, x: 5, y: 2)
 
         }
     }
@@ -66,7 +67,11 @@ struct SearchBar: View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(text: .constant(""))
+        ZStack {
+            Color.primary.background
+            SearchBar(text: .constant(""))
+        }
+
            // .preferredColorScheme(.dark)
     }
 }
