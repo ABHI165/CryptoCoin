@@ -94,8 +94,8 @@
             filePath = "Coin/Scenes/CoinList/View/CoinListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "headerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -258,6 +258,102 @@
             endingLineNumber = "67"
             landmarkName = "addSubscriber()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7062B86-3A6B-4724-9E51-E2C516CF434B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/Common/View/CircularButton.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "820CFF06-179C-49D4-801F-5B429D41604E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/Scenes/CoinList/View/CoinListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "headerView"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE74AD4C-CC7B-4E46-9FE8-46AB0D7BBB29"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/Scenes/AddPortfolio/Views/AddPortfolioView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5EC6B4F5-3CB7-4DF4-8CCA-A5E207CE1056"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinCore/Sources/Domain/UseCases/GetCoinUseCase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "execute(order:lodeMoreTriggered:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5EC6B4F5-3CB7-4DF4-8CCA-A5E207CE1056 - de7161e82cb95421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Domain.GetCoinUseCase.execute(order: Swift.String, lodeMoreTriggered: Combine.PassthroughSubject&lt;Domain.LoadingType, Swift.Never&gt;) -&gt; ()"
+                  moduleName = "Coin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishekagarwal/Documents/Coin/CoinCore/Sources/Domain/UseCases/GetCoinUseCase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "712">
+               </Location>
+               <Location
+                  uuid = "5EC6B4F5-3CB7-4DF4-8CCA-A5E207CE1056 - d7ec9177c8d745f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Domain.LoadingType) -&gt; Combine.AnyPublisher&lt;Swift.Array&lt;Domain.CoinModel&gt;, Swift.Never&gt; in Domain.GetCoinUseCase.execute(order: Swift.String, lodeMoreTriggered: Combine.PassthroughSubject&lt;Domain.LoadingType, Swift.Never&gt;) -&gt; ()"
+                  moduleName = "Coin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishekagarwal/Documents/Coin/CoinCore/Sources/Domain/UseCases/GetCoinUseCase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "230">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

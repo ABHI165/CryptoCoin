@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CoinListView: View {
     @StateObject private var homeVm: CoinListViewModel
+    @State var showAddPortfolioView = false
     private var cancellableBag = CancellableBag()
 
     init(initializer: @escaping (CancellableBag) -> CoinListViewModel) {
@@ -75,9 +76,15 @@ extension CoinListView {
     private var headerView: some View {
             HStack(alignment: .center) {
                 CircularButton(animate: $homeVm.showPortfolio, imageName: homeVm.showPortfolio ? "plus" : "info") {
+                    if homeVm.showPortfolio {
+                       showAddPortfolioView = true
+                    }
 
                 }
                 .padding()
+                .sheet(isPresented: $showAddPortfolioView) {
+                    AddPortfolioView()
+                }
                 Spacer()
 
                 Text(homeVm.showPortfolio ? "Portfolio" : "Live Price")

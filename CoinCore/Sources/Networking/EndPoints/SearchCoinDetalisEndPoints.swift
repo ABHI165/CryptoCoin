@@ -1,18 +1,16 @@
 //
-//  File.swift
-//  
+//  SearchCoinDetalisEndPoints.swift
+//
 //
 //  Created by Abhishek Agarwal on 18/02/22.
 //
 
 import Foundation
 
-public typealias Headers = [String: String]
+public enum SearchCoinDetalisEndPoints {
 
-public enum GetCoinsEndpoints {
-
-    case getCoin(page: Int, order: String)
-    case getStats
+    case search(query: String)
+    case getDetails(id: String, localization: String, tickers: Bool, marketData: Bool, communityData: Bool, developerData: Bool, sparkline: Bool)
 
     var requestTimeOut: Float {
         return 30
@@ -20,7 +18,7 @@ public enum GetCoinsEndpoints {
 
     var httpMethod: HTTPMethod {
         switch self {
-        case .getCoin, .getStats:
+        case .search, .getDetails:
             return .GET
         }
     }
@@ -34,9 +32,7 @@ public enum GetCoinsEndpoints {
   // encodable request body for POST
     var requestBody: Encodable? {
         switch self {
-        case .getCoin, .getStats:
-            return nil
-        default:
+        case .search, .getDetails:
             return nil
         }
     }
@@ -47,18 +43,20 @@ public enum GetCoinsEndpoints {
         let basePath = "/api/v3/"
         var urlComponnent = URLComponents(string: baseUrl)
         switch self {
-        case .getCoin(let pageNo, let order):
-            urlComponnent?.path = "\(basePath)coins/markets"
-            urlComponnent?.queryItems = [
-                URLQueryItem(name: "vs_currency", value: "inr"),
-                URLQueryItem(name: "sparkline", value: "true"),
-                URLQueryItem(name: "price_change_percentage", value: "24h"),
-                URLQueryItem(name: "page", value: "\(pageNo)"),
-                URLQueryItem(name: "order", value: order)
-            ]
+        case .search(let query):
+            urlComponnent?.path = "\(basePath)search"
+            urlComponnent?.queryItems = [ URLQueryItem(name: "query", value: query)]
 
-        case .getStats:
-            urlComponnent?.path = "\(basePath)global"
+        case .getDetails(let id, let localization, let tickers, let marketData, let communityData, let developerData, let sparkline):
+            urlComponnent?.path = "\(basePath)coins/\(id)"
+            urlComponnent?.queryItems = [
+            URLQueryItem(name: "localization", value: localization),
+            URLQueryItem(name: "tickers", value: "\(tickers)"),
+            URLQueryItem(name: "market_data", value: "\(marketData)"),
+            URLQueryItem(name: "community_data", value: "\(communityData)"),
+            URLQueryItem(name: "developer_data", value: "\(developerData)"),
+            URLQueryItem(name: "sparkline", value: "\(sparkline)")
+            ]
 
         }
         guard let queryUrl =  urlComponnent?.url?.absoluteString else {

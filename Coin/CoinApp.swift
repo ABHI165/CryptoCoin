@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct CoinApp: App {
+
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.primary.accent)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.primary.accent)]
+    }
+
     var body: some Scene {
         WindowGroup {
             DIContainer.composeApp
